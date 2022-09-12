@@ -1,0 +1,60 @@
+
+* {
+	
+}
+
+
+a {
+	text-decoration: none;
+	
+}
+
+input {
+	min-width: 200px;
+	padding: 8px;
+	margin: 5px;
+}
+
+.navbar {
+	text-align: center;
+	padding: 10px;
+}
+
+.navbar a.btn {
+	font-size: 20px;
+	color: black;
+	border: 1px solid black;
+	border-radius: 5px;
+	background-color: white;
+	padding: 10px 20px;
+	margin: 8px;
+}
+
+.navbar a.btn:hover {
+	background: #EEEEEE;
+}
+
+.login-form {
+	display: block;
+	text-align: center;
+	padding-top: 30px;
+}
+
+.login-form form {
+	display: inline-block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: left;
+}
+
+.login-form form input {
+	font-size: 16px;
+	min-width: 300px;
+	padding: 10px;
+	margin: 8px;
+}
+
+.sub-btn {
+	text-align: center;
+	margin-top: 20px;
+}

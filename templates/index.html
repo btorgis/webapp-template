@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>AOG</title>
+		<link rel="stylesheet" type="text/css" href="../static/css/style.css">
+	</head>
+	<body>
+		<div class="navbar">
+			{{ if .IsAuthenticated}}
+			<a href="/logout" class="btn">Logout</a>
+			{{else}}
+			<a href="/login" class="btn">Login</a>
+			<a href="/signup">Sign Up</a>
+			{{end}}
+		</div>
+		
+		<h2>Home Page</h2>
+		
+	</body>
+</html>
