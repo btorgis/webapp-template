@@ -7,6 +7,13 @@ import (
 	"btorgis.com/webapp/users"
 )
 
+type Errors struct {
+	UserError			string
+	PasswordError		string
+	Email				string
+	Password			string
+}
+
 var user = users.User{IsAuthenticated: false}
 
 func HomeHandler(w http.ResponseWriter, r *http.Request) {

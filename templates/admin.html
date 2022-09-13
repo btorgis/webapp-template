@@ -16,21 +16,46 @@
 				<a class="u-pull-right navbar-item" href="/logout" class="btn">Logout</a>
 				{{else}}
 				<a class="u-pull-right navbar-item" href="/login" class="btn">Login</a>
-				<a class="u-pull-right navbar-item" href="/signup">Sign Up</a>
 				{{end}}
 			</div>
 			
 			<div class="section center">
-				<h3 class="title">Home Page</h3>
-
-
-
+				<h3 class="title">Admin</h3>
+				<h5>{{ .Role }}</h5>
 			</div>
 			
+			<div class="center">
+				<form method="POST">
+					<input class="" name="search" placeholder="Search for user" type="text">
+					
+						<input class="" type="submit" name="search" value="Search">
+
+				</form>
+			</div>
+			
+			<div>
+				<table class="u-full-width">
+					<thead>
+						<tr>
+							<th>Email</th>
+							<th>Password</th>
+							<th>Role</th>
+						</tr>
+					</thead>
+					<tbody>
+						{{ range .Users }}
+						<tr>
+							<td>{{ .Email }}</td>
+							<td>{{ .Password }}</td>
+							<td>{{ .Role }}</td>
+						</tr>
+						{{ end }}
+					</tbody>
+				</table>
+				
+			</div>
 			
 		</div>
 		
 	</body>
 </html>
-
-

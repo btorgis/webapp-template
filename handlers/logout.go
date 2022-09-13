@@ -12,6 +12,7 @@ func LogoutHandler(w http.ResponseWriter, r *http.Request) {
 	paths := []string {
 		"./templates/index.html",
 	}
+	
 	user.IsAuthenticated = false
 	c, err := r.Cookie("session_token")
 	if err != nil {

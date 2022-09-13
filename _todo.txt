@@ -1,0 +1,21 @@
+
+** Web App **
+
+TODO:
+
+[ ] Users
+	[ ] Add Roles (admin, tech, etc)
+
+[ ] Password
+	[ ] Create Hash
+
+[ ] Database Implementation
+	[x] Store Users
+	[ ] Store Sessions
+	
+[ ] Sessions
+	[ ] Remove Expired
+
+[ ] Admin Role
+	[ ] CRUD Users
+	[ ] CRUD Sessions
