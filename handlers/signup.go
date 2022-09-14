@@ -33,7 +33,7 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 			} else {
 				// Add User to Database			
 				users.AddUser(user)
-				
+
 				// User Credentials Valid
 				// Create a new random session token
 				sessionToken := uuid.NewString()

@@ -50,7 +50,6 @@ func GetUsers (email string) []User {
 
 // Add User to Database
 func AddUser (user User) error {
-	
 	data.UserDB.Create(&user)
 	return nil
 }

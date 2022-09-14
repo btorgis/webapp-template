@@ -23,14 +23,33 @@ func AdminHandler(w http.ResponseWriter, r *http.Request) {
 	user.IsAuthenticated = false
 	
 	td := TemplateData{}
+	var query string
 	
 	// Process Form Data
 	r.ParseForm()
 	if r.Method == "POST" {
-		// Get user from database
-		query := r.FormValue("search")
+		// Get Users from Database
+		query = r.FormValue("search")
 		us := users.GetUsers(query)
 		td.Users = us
+	}
+	
+	if r.Method == "GET" {
+		// Delete User from Database
+		if r.URL.Query().Get("delete") == "true" {
+			email := r.URL.Query().Get("email")
+			u := users.GetUser(email)
+			if u.Email != "" {
+				users.DeleteUser(u)
+			}
+			
+			// Refresh the query results after deletion
+			//query := r.FormValue("search")
+			us := users.GetUsers(query)
+			td.Users = us
+			
+		}
+
 	}
 	
 	for key, value := range users.Sessions {

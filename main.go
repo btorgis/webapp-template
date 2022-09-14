@@ -19,6 +19,7 @@ func main() {
 	// Initialize Databases
 	users.InitDatabase()
 
+	// Setup Route Handlers
 	mux := http.NewServeMux()
 	mux.HandleFunc("/", handlers.HomeHandler)
 	mux.HandleFunc("/admin", handlers.AdminHandler)
