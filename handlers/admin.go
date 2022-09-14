@@ -42,7 +42,7 @@ func AdminHandler(w http.ResponseWriter, r *http.Request) {
 			if u.Email != "" {
 				users.DeleteUser(u)
 			}
-			
+
 			// Refresh the query results after deletion
 			//query := r.FormValue("search")
 			us := users.GetUsers(query)

@@ -26,7 +26,7 @@
 							<label style="color: red; text-align: left;">{{.UserError}}</label>
 							<input class="u-full-width" name="email" placeholder="Email" type="email"><br>
 							{{else if and (not .UserError) (.PasswordError)}}
-							<input class="u-full-width" name="email" placeholder="Email" type="email" value="{{.Username}}"><br>
+							<input class="u-full-width" name="email" placeholder="Email" type="email" value="{{.Email}}"><br>
 							{{else}}
 							<input class="u-full-width" name="email" placeholder="Email" type="email"><br>
 							{{end}}							

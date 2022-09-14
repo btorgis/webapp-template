@@ -3,15 +3,11 @@ package users
 import (
 	"fmt"
 	"time"
-	
 	"github.com/jinzhu/gorm"
 	_ "github.com/jinzhu/gorm/dialects/sqlite"
 	
 	"btorgis.com/webapp/data"
 )
-
-// Stores the user sessions. Use Database for larger scale app
-var Sessions = map[string]Session{}
 
 type User struct {
 	gorm.Model
@@ -20,6 +16,7 @@ type User struct {
 	Role				string	`json:"role"`
 	IsAuthenticated  	bool	`json:"authenticated"`
 	LoginAttempts		int		`json:"logins"`
+	CreatedAt			string	`json:"created"`
 }
 
 func InitDatabase() {
@@ -50,6 +47,7 @@ func GetUsers (email string) []User {
 
 // Add User to Database
 func AddUser (user User) error {
+	user.CreatedAt = time.Now().String()
 	data.UserDB.Create(&user)
 	return nil
 }
@@ -73,21 +71,3 @@ func IsAccountValid (email string) bool {
 	}
 }
 
-// Each session contains the username and expiration
-type Session struct {
-	Username		string
-	Expires 		time.Time
-}
-
-// Method to determine if the session has expired
-func (s Session) isExpired() bool {
-	return s.Expires.Before(time.Now())
-}
-
-
-/*
-// Method to determine if session is valid
-func (s Session) isValid() bool {
-	
-}
-*/

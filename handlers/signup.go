@@ -19,6 +19,7 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 	errors := Errors{}
 	
 	r.ParseForm()
+	valid := true
 	// Check Login Button Pressed
 	if r.Method == "POST" {
 		if r.FormValue("submit") == "Submit" {
@@ -26,11 +27,25 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 			user.Email = r.FormValue("email")
 			user.Password = r.FormValue("password")
 			
+			// Validate Form Data
+			if user.Email == "" {
+				errors.UserError = "Email cannot be blank"
+				valid = false
+			}
+			
+			if user.Password == "" {
+				errors.PasswordError = "Password cannot be blank"
+				errors.Email = user.Email
+				valid = false
+			}
+			
 			// Check If User Already Exists
 			if users.IsAccountValid(user.Email) {
-				errors.UserError = "User already exists"
-						
-			} else {
+				errors.UserError = "User already exists"	
+				valid = false
+			}
+			
+			if (valid) { 
 				// Add User to Database			
 				users.AddUser(user)
 
@@ -56,17 +71,6 @@ func SignupHandler(w http.ResponseWriter, r *http.Request) {
 				http.Redirect(w, r, "/", http.StatusSeeOther)
 				
 			}
-			
-			// Validate Form Data
-			if user.Email == "" {
-				errors.UserError = "Email cannot be blank"
-			}
-						
-			if user.Password == "" {
-				errors.PasswordError = "Password cannot be blank"
-				errors.Email = user.Email
-			}
-			
 		
 		}
 	}
